@@ -32,19 +32,17 @@ namespace Uplift.DataAccess.Data.Repository
 		public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
+
 			if (filter != null)
 			{
 				query = query.Where(filter);
-
 			}
-
-
-			//include proprties will be comma seperated
+			//include properties will be comma seperated
 			if (includeProperties != null)
 			{
 				foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
 				{
-					query = query.Include(includeProperties);
+					query = query.Include(includeProperty);
 				}
 			}
 
@@ -54,7 +52,6 @@ namespace Uplift.DataAccess.Data.Repository
 			}
 			return query.ToList();
 		}
-
 		public T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
