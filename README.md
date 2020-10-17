@@ -4,4 +4,4 @@ A fully data driven web application in .net core |
 Database using entity framework and code first pattern |
 Repository pattern and dependency injection |
 MVC patterns flow |
-Bootstrap to manipulate the overall layout. |
+Bootstrap to manipulate the overall layout. 
